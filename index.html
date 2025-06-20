@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sistema de Vestibular - Admin</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f0f2f5;
+    }
+    .login-container {
+      max-width: 400px;
+      margin: 80px auto;
+      background: white;
+      padding: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+    h2 {
+      text-align: center;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #4CAF50;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .error {
+      color: red;
+      text-align: center;
+    }
+
+    /* Dashboard estilo grande para desktop */
+    .dashboard {
+      display: none;
+      max-width: 90%;
+      margin: 40px auto;
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    .dashboard h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .dashboard ul {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .dashboard li {
+      background-color: #f9f9f9;
+      padding: 20px;
+      text-align: center;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-weight: bold;
+    }
+    .dashboard button {
+      width: 200px;
+      display: block;
+      margin: 30px auto 0 auto;
+      background-color: #e53935;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Login do Administrador -->
+  <div class="login-container" id="login">
+    <h2>Login do Administrador</h2>
+    <input type="text" id="usuario" placeholder="Usuário">
+    <input type="password" id="senha" placeholder="Senha">
+    <button onclick="fazerLogin()">Entrar</button>
+    <p class="error" id="erro"></p>
+  </div>
+
+  <!-- Dashboard Inicial -->
+  <div class="dashboard" id="dashboard">
+    <h2>Bem-vindo, Administrador</h2>
+    <ul>
+      <li>Cadastrar Vestibular</li>
+      <li>Lista de Vestibulares</li>
+      <li>Gerenciar Inscrições</li>
+      <li>Local de Prova</li>
+      <li>Notas dos Candidatos</li>
+      <li>Listas de Chamada</li>
+    </ul>
+    <button onclick="logout()">Sair</button>
+  </div>
+
+  <script>
+    function fazerLogin() {
+      const usuario = document.getElementById('usuario').value;
+      const senha = document.getElementById('senha').value;
+      const erro = document.getElementById('erro');
+
+      if (usuario === 'comvest' && senha === '1234') {
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('dashboard').style.display = 'block';
+        erro.textContent = '';
+      } else {
+        erro.textContent = 'Usuário ou senha inválidos!';
+      }
+    }
+
+    function logout() {
+      document.getElementById('dashboard').style.display = 'none';
+      document.getElementById('login').style.display = 'block';
+      document.getElementById('usuario').value = '';
+      document.getElementById('senha').value = '';
+    }
+  </script>
+
+</body>
+</html>
